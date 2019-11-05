@@ -22,8 +22,9 @@ class NewPost extends Component {
             title: this.state.title,
             content: this.state.content,
             author: this.state.author,
-            topic: this.state.topc
+            topic: this.state.topic
         }
+        console.log(data)
         this.props.firebaseRef.push(data);
     }
 
