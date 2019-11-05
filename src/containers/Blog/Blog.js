@@ -4,7 +4,7 @@ import config from "../../firebase-config";
 import Post from "../../components/Post/Post";
 import NewPost from "../../components/NewPost/NewPost";
 import styles from "./Blog.module.css";
-import { CardDeck } from "reactstrap";
+import { CardDeck, Row } from "reactstrap";
 
 class Blog extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Blog extends Component {
       });
     });
   }
-
+  //<CardDeck className="col-md-4 col-sm-12 mb-4">{posts}</CardDeck>
   render() {
     let posts = (
       <p style={{ textAlign: "center" }}>Something went terribly wrong!</p>
@@ -66,7 +66,7 @@ class Blog extends Component {
         <div>
           <h3>Recent Vents</h3>
           <div>
-            <CardDeck>{posts}</CardDeck>
+            <Row>{posts}</Row>
           </div>
         </div>
       </div>
