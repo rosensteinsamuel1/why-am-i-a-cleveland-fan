@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Post.module.css";
-import { Card, CardText, CardBody, CardTitle } from "reactstrap";
+import { Card, CardText, CardBody, CardTitle, CardImg } from "reactstrap";
+
+// TODO: add logo image based on topic
 
 const post = props => (
   <Card>

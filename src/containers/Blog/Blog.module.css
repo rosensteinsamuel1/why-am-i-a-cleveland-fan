@@ -2,3 +2,8 @@
   margin-top: 20px;
   text-align: center;
 }
+
+.appBackground {
+  background-color: orange;
+  height: 100vh;
+}

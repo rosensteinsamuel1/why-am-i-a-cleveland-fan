@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./App.module.css";
 import Blog from "./containers/Blog/Blog";
 
+// className={styles.App}
 function App() {
   return (
-    <div className={styles.App}>
+    <div>
       <Blog />
     </div>
   );

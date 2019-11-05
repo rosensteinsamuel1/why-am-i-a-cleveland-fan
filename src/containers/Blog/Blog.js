@@ -52,7 +52,7 @@ class Blog extends Component {
     }
 
     return (
-      <div>
+      <div class={styles.appBackground}>
         <div className={styles.appTitle}>
           <h1>Cleveland Sports Fans- Unite</h1>
           <h3>
