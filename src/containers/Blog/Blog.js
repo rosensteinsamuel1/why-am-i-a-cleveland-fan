@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
 import config from "../../firebase-config";
-import Post from "../../components/Posts/Post/Post";
+import Post from "../../components/Post/Post";
 import NewPost from "../../components/NewPost/NewPost";
 import styles from "./Blog.module.css";
-import { CardColumns } from "reactstrap";
+import { CardDeck } from "reactstrap";
 
 class Blog extends Component {
   constructor(props) {
@@ -63,8 +63,12 @@ class Blog extends Component {
         <div>
           <NewPost firebaseRef={firebase.database().ref("posts")} />
         </div>
-        <h3>Local Listings</h3>
-        <CardColumns>{posts}</CardColumns>
+        <div>
+          <h3>Recent Vents</h3>
+          <div>
+            <CardDeck>{posts}</CardDeck>
+          </div>
+        </div>
       </div>
     );
   }

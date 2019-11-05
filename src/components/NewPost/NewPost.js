@@ -11,6 +11,8 @@ import {
 } from "reactstrap";
 import styles from "./NewPost.module.css";
 
+//TODO: make sure all fields are filled when submitting new post
+
 class NewPost extends Component {
   constructor(props) {
     super(props);
