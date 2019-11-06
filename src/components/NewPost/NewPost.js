@@ -13,6 +13,18 @@ import styles from "./NewPost.module.css";
 
 //TODO: make sure all fields are filled when submitting new post
 
+//  <select
+//                 className={styles.topic}
+//                 value={this.state.topic}
+//                 onChange={event => this.setState({ topic: event.target.value })}
+//               >
+//                 <option value="">--Choose Category--</option>
+//                 <option value="Browns">Browns</option>
+//                 <option value="Indians">Indians</option>
+//                 <option value="Cavs">Cavs</option>
+//                 <option value="Other">Other</option>
+//               </select>
+
 class NewPost extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +39,23 @@ class NewPost extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
 
+  validateForm = () => {
+    if (
+      this.state.title == null ||
+      this.state.title === "" ||
+      this.state.content == null ||
+      this.state.content === "" ||
+      this.state.author == null ||
+      this.state.author === "" ||
+      this.state.topic == null ||
+      this.state.topic === ""
+    ) {
+      alert("Please Fill All Required Field");
+      return false;
+    }
+    return true;
+  };
+
   submitHandler = () => {
     const data = {
       title: this.state.title,
@@ -34,9 +63,12 @@ class NewPost extends Component {
       author: this.state.author,
       topic: this.state.topic
     };
-    this.setState({ modal: !this.state.modal });
-    console.log(data);
-    this.props.firebaseRef.push(data);
+    if (this.validateForm()) {
+      this.setState({ modal: !this.state.modal });
+      alert("Form is validated");
+      console.log(data);
+      this.props.firebaseRef.push(data);
+    }
   };
 
   modalHandler = () => {
@@ -47,55 +79,77 @@ class NewPost extends Component {
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.modalHandler}>
-          New Vent
-        </Button>
-        <Modal isOpen={this.state.modal} toggle={this.modalHandler}>
+        <div style={{ textAlign: "center" }}>
+          <Button color="danger" onClick={this.modalHandler}>
+            New Vent
+          </Button>
+        </div>
+
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.modalHandler}
+          className={styles.NewPostModal}
+        >
           <ModalHeader toggle={this.modalHandler}>New Vent</ModalHeader>
-          <FormGroup>
-            <Label for="exampleEmail">Title</Label>
-            <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="Vent Title"
-              onChange={event => this.setState({ title: event.target.value })}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="content">Vent</Label>
-            <Input
-              type="textarea"
-              name="email"
-              id="exampleEmail"
-              placeholder="Type your vent"
-              maxLength="200"
-              onChange={event => this.setState({ content: event.target.value })}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleEmail">Author</Label>
-            <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="Your name"
-              onChange={event => this.setState({ author: event.target.value })}
-            />
-          </FormGroup>
           <ModalBody>
-            <label>Topic</label>
-            <select
-              className={styles.topicSelect}
-              value={this.state.topic}
-              onChange={event => this.setState({ topic: event.target.value })}
-            >
-              <option value="">--Choose Category--</option>
-              <option value="Browns">Browns</option>
-              <option value="Indians">Indians</option>
-              <option value="Cavs">Cavs</option>
-              <option value="Other">Other</option>
-            </select>
+            <FormGroup>
+              <Label className={styles.title} for="exampleEmail">
+                Title
+              </Label>
+              <Input
+                type="email"
+                name="email"
+                id="exampleEmail"
+                placeholder="Vent Title"
+                onChange={event => this.setState({ title: event.target.value })}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label className={styles.content} for="content">
+                Vent
+              </Label>
+              <Input
+                type="textarea"
+                name="email"
+                id="exampleEmail"
+                placeholder="Type your vent"
+                maxLength="200"
+                onChange={event =>
+                  this.setState({ content: event.target.value })
+                }
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label className={styles.author} for="author">
+                Author
+              </Label>
+              <Input
+                type="textarea"
+                name="email"
+                id="exampleEmail"
+                placeholder="Your name"
+                onChange={event =>
+                  this.setState({ author: event.target.value })
+                }
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label className={styles.topic} for="author">
+                Topic
+              </Label>
+              <Input
+                type="select"
+                name="topicSelect"
+                id="exampleSelect"
+                onChange={event => this.setState({ topic: event.target.value })}
+              >
+                <option value="">--Choose a Topic--</option>
+                <option value="Browns">Browns</option>
+                <option value="Indians">Indians</option>
+                <option value="Cavs">Cavs</option>
+                <option value="Other">Other</option>
+              </Input>
+            </FormGroup>
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.submitHandler}>
