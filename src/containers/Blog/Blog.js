@@ -4,7 +4,7 @@ import config from "../../firebase-config";
 import Post from "../../components/Post/Post";
 import NewPost from "../../components/NewPost/NewPost";
 import styles from "./Blog.module.css";
-import { CardDeck, Row } from "reactstrap";
+import { Row } from "reactstrap";
 
 class Blog extends Component {
   constructor(props) {
