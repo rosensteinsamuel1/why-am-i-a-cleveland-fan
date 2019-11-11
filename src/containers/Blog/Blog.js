@@ -79,7 +79,7 @@ class Blog extends Component {
           values.push(child.val());
         });
         _this.setState({
-          posts: values,
+          posts: values.reverse(),
           loading: false
         });
       });
@@ -100,7 +100,6 @@ class Blog extends Component {
           <NewPost firebaseRef={firebase.database().ref("posts")} />
         </div>
         <div>
-          <h3>Recent Vents</h3>
           <Posts error={this.state.error} posts={this.state.posts} />
         </div>
       </div>

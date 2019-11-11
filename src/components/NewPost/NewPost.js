@@ -46,7 +46,7 @@ class NewPost extends Component {
   };
 
   submitHandler = () => {
-    let timestamp = new Date().toLocaleString();
+    let timestamp = Date.now(); // new Date().toLocaleString();
     console.log(timestamp);
     const data = {
       title: this.state.title,
@@ -57,8 +57,6 @@ class NewPost extends Component {
     };
     if (this.validateForm()) {
       this.setState({ modal: !this.state.modal });
-      alert("Form is validated");
-      console.log(data);
       this.props.firebaseRef.push(data);
     }
   };

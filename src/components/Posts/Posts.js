@@ -26,7 +26,7 @@ const posts = props => {
 
   return (
     <div className={styles.cardDeck}>
-      <h1>POSTS</h1>
+      <h1 style={{ fontFamily: "WorkSans-Bold" }}>RECENT VENTS</h1>
       <Row>{posts}</Row>
     </div>
   );
