@@ -4,7 +4,7 @@ import config from "../../firebase-config";
 import Post from "../../components/Post/Post";
 import NewPost from "../../components/NewPost/NewPost";
 import styles from "./Blog.module.css";
-import { Row } from "reactstrap";
+import Posts from "../../components/Posts/Posts";
 
 // TODO: create filter button that toggles display of only one topic
 
@@ -68,36 +68,21 @@ class Blog extends Component {
   }
 
   componentDidMount() {
-    let postsRef = firebase.database().ref("posts");
     let _this = this;
-    postsRef.on("value", function(snapshot) {
-      console.log(Object.values(snapshot.val()));
-
-      _this.setState({
-        posts: Object.values(snapshot.val()),
-        loading: false
+    firebase
+      .database()
+      .ref("posts")
+      .orderByChild("timestamp")
+      .on("value", function(snapshot) {
+        _this.setState({
+          posts: Object.values(snapshot.val()),
+          loading: false
+        });
       });
-    });
   }
+
   //<CardDeck className="col-md-4 col-sm-12 mb-4">{posts}</CardDeck>
   render() {
-    let posts = (
-      <p style={{ textAlign: "center" }}>Something went terribly wrong!</p>
-    );
-    if (!this.state.error) {
-      posts = this.state.posts.map(post => {
-        return (
-          <Post
-            title={post.title}
-            author={post.author}
-            content={post.content}
-            topic={post.topic}
-            timestamp={post.timestamp}
-          />
-        );
-      });
-    }
-
     return (
       <div class={styles.appBackground}>
         <div className={styles.appTitle}>
@@ -112,9 +97,7 @@ class Blog extends Component {
         </div>
         <div>
           <h3>Recent Vents</h3>
-          <div className={styles.cardDeck}>
-            <Row>{posts}</Row>
-          </div>
+          <Posts error={this.state.error} posts={this.state.posts} />
         </div>
       </div>
     );
