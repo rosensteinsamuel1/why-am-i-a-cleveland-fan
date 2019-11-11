@@ -1,6 +1,8 @@
 .appTitle {
   margin-top: 20px;
   text-align: center;
+  font-family: WorkSans-Bold;
+  color: rgb(237, 70, 47);
 }
 
 .appBackground {

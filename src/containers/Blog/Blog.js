@@ -101,7 +101,7 @@ class Blog extends Component {
     return (
       <div class={styles.appBackground}>
         <div className={styles.appTitle}>
-          <h1>Cleveland Sports Fans- Unite</h1>
+          <h1>CLEVELAND SPORTS FANS - UNITE</h1>
           <h3>
             This is a forum for venting about the rough life we live as
             Cleveland sports fans.
