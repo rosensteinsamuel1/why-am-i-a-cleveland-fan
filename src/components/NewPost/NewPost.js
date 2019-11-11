@@ -11,19 +11,8 @@ import {
 } from "reactstrap";
 import styles from "./NewPost.module.css";
 
-//TODO: make sure all fields are filled when submitting new post
-
-//  <select
-//                 className={styles.topic}
-//                 value={this.state.topic}
-//                 onChange={event => this.setState({ topic: event.target.value })}
-//               >
-//                 <option value="">--Choose Category--</option>
-//                 <option value="Browns">Browns</option>
-//                 <option value="Indians">Indians</option>
-//                 <option value="Cavs">Cavs</option>
-//                 <option value="Other">Other</option>
-//               </select>
+// TODO: make sure all fields are filled when submitting new post DONE
+// TODO: add DATE propery to post
 
 class NewPost extends Component {
   constructor(props) {
@@ -57,11 +46,14 @@ class NewPost extends Component {
   };
 
   submitHandler = () => {
+    let timestamp = new Date().toLocaleString();
+    console.log(timestamp);
     const data = {
       title: this.state.title,
       content: this.state.content,
       author: this.state.author,
-      topic: this.state.topic
+      topic: this.state.topic,
+      timestamp: timestamp
     };
     if (this.validateForm()) {
       this.setState({ modal: !this.state.modal });
@@ -113,7 +105,7 @@ class NewPost extends Component {
                 name="email"
                 id="exampleEmail"
                 placeholder="Type your vent"
-                maxLength="200"
+                maxLength="170"
                 onChange={event =>
                   this.setState({ content: event.target.value })
                 }

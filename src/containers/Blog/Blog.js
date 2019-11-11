@@ -6,58 +6,60 @@ import NewPost from "../../components/NewPost/NewPost";
 import styles from "./Blog.module.css";
 import { Row } from "reactstrap";
 
+// TODO: create filter button that toggles display of only one topic
+
 class Blog extends Component {
   constructor(props) {
     super(props);
     // Post includes the following data:
     // Category, Title, Author, Location, Cotent
 
-    // this.state = {
-    //   posts: []
-    // };
-
     this.state = {
-      posts: [
-        {
-          id: 1,
-          category: "sports",
-          title: "used dirtbike",
-          content: "this ‘is a post about the BROWNS",
-          author: "sam",
-          topic: "browns"
-        },
-        {
-          id: 1,
-          title: "another used dirtbike",
-          content: "this is a post about the CAVS",
-          author: "sam",
-          topic: "indians"
-        },
-        {
-          id: 1,
-          category: "sports",
-          title: "used dirtbike",
-          content: "this ‘is a post about the BROWNS",
-          author: "sam",
-          topic: "browns"
-        },
-        {
-          id: 1,
-          title: "another used dirtbike",
-          content: "this is a post about the CAVS",
-          author: "sam",
-          topic: "indians"
-        },
-        {
-          id: 1,
-          category: "sports",
-          title: "used dirtbike",
-          content: "this ‘is a post about the BROWNS",
-          author: "sam",
-          topic: "browns"
-        }
-      ]
+      posts: []
     };
+
+    // this.state = {
+    //   posts: [
+    //     {
+    //       id: 1,
+    //       category: "sports",
+    //       title: "used dirtbike",
+    //       content: "this ‘is a post about the BROWNS",
+    //       author: "sam",
+    //       topic: "browns"
+    //     },
+    //     {
+    //       id: 1,
+    //       title: "another used dirtbike",
+    //       content: "this is a post about the CAVS",
+    //       author: "sam",
+    //       topic: "indians"
+    //     },
+    //     {
+    //       id: 1,
+    //       category: "sports",
+    //       title: "used dirtbike",
+    //       content: "this ‘is a post about the BROWNS",
+    //       author: "sam",
+    //       topic: "browns"
+    //     },
+    //     {
+    //       id: 1,
+    //       title: "another used dirtbike",
+    //       content: "this is a post about the CAVS",
+    //       author: "sam",
+    //       topic: "indians"
+    //     },
+    //     {
+    //       id: 1,
+    //       category: "sports",
+    //       title: "used dirtbike",
+    //       content: "this ‘is a post about the BROWNS",
+    //       author: "sam",
+    //       topic: "browns"
+    //     }
+    //   ]
+    // };
 
     // Initialize Firebase
     if (!firebase.apps.length) {
@@ -90,6 +92,7 @@ class Blog extends Component {
             author={post.author}
             content={post.content}
             topic={post.topic}
+            timestamp={post.timestamp}
           />
         );
       });
@@ -109,7 +112,7 @@ class Blog extends Component {
         </div>
         <div>
           <h3>Recent Vents</h3>
-          <div>
+          <div className={styles.cardDeck}>
             <Row>{posts}</Row>
           </div>
         </div>
