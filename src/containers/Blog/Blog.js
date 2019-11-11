@@ -74,8 +74,12 @@ class Blog extends Component {
       .ref("posts")
       .orderByChild("timestamp")
       .on("value", function(snapshot) {
+        var values = [];
+        snapshot.forEach(function(child) {
+          values.push(child.val());
+        });
         _this.setState({
-          posts: Object.values(snapshot.val()),
+          posts: values,
           loading: false
         });
       });
