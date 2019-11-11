@@ -3,6 +3,8 @@ import { Row } from "reactstrap";
 import styles from "./Posts.module.css";
 import Post from "../Post/Post";
 
+// TODO: sort via timestamp
+
 const posts = props => {
   let posts = (
     <p style={{ textAlign: "center" }}>Something went terribly wrong!</p>
