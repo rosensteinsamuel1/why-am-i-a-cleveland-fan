@@ -134,10 +134,10 @@ class NewPost extends Component {
                 onChange={event => this.setState({ topic: event.target.value })}
               >
                 <option value="">--Choose a Topic--</option>
-                <option value="Browns">Browns</option>
-                <option value="Indians">Indians</option>
-                <option value="Cavs">Cavs</option>
-                <option value="Other">Other</option>
+                <option value="browns">Browns</option>
+                <option value="indians">Indians</option>
+                <option value="cavs">Cavs</option>
+                <option value="other">Other</option>
               </Input>
             </FormGroup>
           </ModalBody>

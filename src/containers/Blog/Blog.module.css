@@ -9,3 +9,15 @@
   /* background-color: orange; */
   height: 100vh;
 }
+
+.sortButtons button {
+  margin: 10px;
+  padding: 5px;
+  width: 150px;
+  text-align: center;
+}
+
+.active {
+  background-color: rgb(108, 117, 125);
+  color: rgb(249, 249, 249);
+}

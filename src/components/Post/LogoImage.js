@@ -8,13 +8,13 @@ import clevelandPic from "../../assets/photos/cleveland.jpg";
 const logoImg = props => {
   let img;
   switch (props.topic) {
-    case "Indians":
+    case "indians":
       img = indiansLogo;
       break;
-    case "Cavs":
+    case "cavs":
       img = cavsLogo;
       break;
-    case "Browns":
+    case "browns":
       img = brownsLogo;
       break;
     default:

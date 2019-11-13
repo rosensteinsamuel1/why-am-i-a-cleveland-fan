@@ -17,6 +17,7 @@ class Blog extends Component {
     this.state = {
       displayPosts: [],
       allPosts: [],
+      active: "all",
       choosenTopic: null
     };
 
@@ -98,7 +99,11 @@ class Blog extends Component {
         return post;
       }
     });
-    this.setState({ choosenTopic: topic, displayPosts: sortedArr });
+    this.setState({
+      choosenTopic: topic,
+      displayPosts: sortedArr,
+      active: topic
+    });
   }
 
   //<CardDeck className="col-md-4 col-sm-12 mb-4">{posts}</CardDeck>
@@ -111,15 +116,42 @@ class Blog extends Component {
             This is a forum for venting about the rough life we live as
             Cleveland sports fans.
           </h3>
-          <button onClick={() => this.topicSortHandler(null)}> All</button>
-          <button onClick={() => this.topicSortHandler("Browns")}>
+        </div>
+        <div className={styles.sortButtons}>
+          <button
+            className={this.state.active === "all" ? styles.active : ""}
+            onClick={() => this.topicSortHandler(null)}
+          >
+            {" "}
+            All
+          </button>
+          <button
+            className={this.state.active === "browns" ? styles.active : ""}
+            onClick={() => this.topicSortHandler("browns")}
+          >
             Browns
           </button>
-          <button onClick={() => this.topicSortHandler("Indians")}>
+          <button
+            className={this.state.active === "indians" ? styles.active : ""}
+            onClick={() => this.topicSortHandler("indians")}
+          >
             {" "}
             Indians
           </button>
-          <button onClick={() => this.topicSortHandler("Cavs")}> Cavs</button>
+          <button
+            className={this.state.active === "cavs" ? styles.active : ""}
+            onClick={() => this.topicSortHandler("cavs")}
+          >
+            {" "}
+            Cavs
+          </button>
+          <button
+            className={this.state.active === "other" ? styles.active : ""}
+            onClick={() => this.topicSortHandler("other")}
+          >
+            {" "}
+            Other
+          </button>
         </div>
         <div>
           <NewPost firebaseRef={firebase.database().ref("posts")} />
