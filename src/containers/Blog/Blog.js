@@ -15,7 +15,9 @@ class Blog extends Component {
     // Category, Title, Author, Location, Cotent
 
     this.state = {
-      posts: []
+      displayPosts: [],
+      allPosts: [],
+      choosenTopic: null
     };
 
     // this.state = {
@@ -79,10 +81,24 @@ class Blog extends Component {
           values.push(child.val());
         });
         _this.setState({
-          posts: values.reverse(),
+          allPosts: values.reverse(),
+          displayPosts: values.reverse(),
           loading: false
         });
       });
+  }
+
+  topicSortHandler(topic) {
+    this.setState({ choosenTopic: topic });
+
+    const sortedArr = this.state.allPosts.filter(post => {
+      if (topic) {
+        return post.topic === topic;
+      } else {
+        return post;
+      }
+    });
+    this.setState({ choosenTopic: topic, displayPosts: sortedArr });
   }
 
   //<CardDeck className="col-md-4 col-sm-12 mb-4">{posts}</CardDeck>
@@ -95,12 +111,21 @@ class Blog extends Component {
             This is a forum for venting about the rough life we live as
             Cleveland sports fans.
           </h3>
+          <button onClick={() => this.topicSortHandler(null)}> All</button>
+          <button onClick={() => this.topicSortHandler("Browns")}>
+            Browns
+          </button>
+          <button onClick={() => this.topicSortHandler("Indians")}>
+            {" "}
+            Indians
+          </button>
+          <button onClick={() => this.topicSortHandler("Cavs")}> Cavs</button>
         </div>
         <div>
           <NewPost firebaseRef={firebase.database().ref("posts")} />
         </div>
         <div>
-          <Posts error={this.state.error} posts={this.state.posts} />
+          <Posts error={this.state.error} posts={this.state.displayPosts} />
         </div>
       </div>
     );
