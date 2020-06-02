@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
 import config from "../../firebase-config";
-import Post from "../../components/Post/Post";
 import NewPost from "../../components/NewPost/NewPost";
 import styles from "./Blog.module.css";
 import Posts from "../../components/Posts/Posts";
@@ -81,9 +80,10 @@ class Blog extends Component {
         snapshot.forEach(function(child) {
           values.push(child.val());
         });
+        let posts = values.reverse();
         _this.setState({
-          allPosts: values.reverse(),
-          displayPosts: values.reverse(),
+          allPosts: posts,
+          displayPosts: posts,
           loading: false
         });
       });

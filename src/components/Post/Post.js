@@ -14,6 +14,7 @@ const post = props => {
     hour: "2-digit",
     minute: "2-digit"
   });
+
   return (
     <div className="col-xl-3 col-md-4 col-sm-6 mb-4 py-2">
       <Card className={["h-100", styles.card].join(" ")}>
