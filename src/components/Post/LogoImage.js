@@ -5,6 +5,8 @@ import indiansLogo from "../../assets/photos/indians_logo.png";
 import cavsLogo from "../../assets/photos/cavs_logo.png";
 import clevelandPic from "../../assets/photos/cleveland.jpg";
 
+import styles from "./Post.module.scss";
+
 const logoImg = props => {
   let img;
   switch (props.topic) {
@@ -23,7 +25,13 @@ const logoImg = props => {
 
   return (
     <div>
-      <img height="150px" width="auto " src={img} alt="topic logo" />
+      <img
+        height="150px"
+        width="auto "
+        src={img}
+        alt="topic logo"
+        className={styles.vent__img}
+      />
     </div>
   );
 };

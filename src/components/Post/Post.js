@@ -1,10 +1,6 @@
 import React from "react";
-import styles from "./Post.module.css";
+import styles from "./Post.module.scss";
 import LogoImg from "./LogoImage";
-
-import { Card, CardText, CardBody, CardTitle, Badge } from "reactstrap";
-
-// TODO: display date on card
 
 const post = props => {
   var date = new Date(props.timestamp).toLocaleString(undefined, {
@@ -16,7 +12,18 @@ const post = props => {
   });
 
   return (
-    <div className="col-xl-3 col-md-4 col-sm-6 mb-4 py-2">
+    <div className={styles.vent}>
+      <LogoImg topic={props.topic} />
+      <div className={styles.vent__title}>{props.title}</div>
+      <div className={styles.vent__author}>{props.author}</div>
+      <div className={styles.vent__date}>{date}</div>
+    </div>
+  );
+};
+
+// className="col-xl-3 col-md-4 col-sm-6 mb-4 py-2">
+
+/* <div>
       <Card className={["h-100", styles.card].join(" ")}>
         <CardBody class={styles.cards} style={{ color: "black" }}>
           <LogoImg topic={props.topic} />
@@ -28,7 +35,6 @@ const post = props => {
           <Badge color="secondary">{date}</Badge>
         </CardBody>
       </Card>
-    </div>
-  );
-};
+    </div> */
+
 export default post;

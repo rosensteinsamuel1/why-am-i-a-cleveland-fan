@@ -1,3 +1,8 @@
-.cardDeck {
-  padding: 50px;
+.vents {
+  grid-column: 1 / -1;
+  margin: 2rem 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 2rem;
 }

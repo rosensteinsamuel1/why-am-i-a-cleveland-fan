@@ -20,6 +20,8 @@ class Blog extends Component {
       choosenTopic: null
     };
 
+    this.buttonOptions = ["browns", "indians", "cavs", "other"];
+
     // this.state = {
     //   posts: [
     //     {
@@ -109,52 +111,37 @@ class Blog extends Component {
   //<CardDeck className="col-md-4 col-sm-12 mb-4">{posts}</CardDeck>
   render() {
     return (
-      <div class={styles.appBackground}>
-        <div className={styles.appTitle}>
-          <h1>CLEVELAND SPORTS FANS - UNITE</h1>
-          <h3>
-            This is a forum for venting about the rough life we live as
-            Cleveland sports fans.
-          </h3>
-        </div>
-        <div className={styles.sortButtons}>
-          <button
-            className={this.state.active === "all" ? styles.active : ""}
-            onClick={() => this.topicSortHandler(null)}
-          >
-            {" "}
-            All
-          </button>
-          <button
-            className={this.state.active === "browns" ? styles.active : ""}
-            onClick={() => this.topicSortHandler("browns")}
-          >
-            Browns
-          </button>
-          <button
-            className={this.state.active === "indians" ? styles.active : ""}
-            onClick={() => this.topicSortHandler("indians")}
-          >
-            {" "}
-            Indians
-          </button>
-          <button
-            className={this.state.active === "cavs" ? styles.active : ""}
-            onClick={() => this.topicSortHandler("cavs")}
-          >
-            {" "}
-            Cavs
-          </button>
-          <button
-            className={this.state.active === "other" ? styles.active : ""}
-            onClick={() => this.topicSortHandler("other")}
-          >
-            {" "}
-            Other
-          </button>
-        </div>
-        <div>
-          <NewPost firebaseRef={firebase.database().ref("posts")} />
+      <div class={styles.container}>
+        <div className={styles.heading_container}>
+          <div className={styles.appTitle}>
+            <h1>CLEVELAND SPORTS FANS - UNITE</h1>
+            <h3>
+              This is a forum for venting about the rough life we live as
+              Cleveland sports fans.
+            </h3>
+          </div>
+          <div className={styles.sortButtons}>
+            <button
+              className={this.state.active === "all" ? styles.active : ""}
+              onClick={() => this.topicSortHandler(null)}
+            >
+              {" "}
+              All
+            </button>
+            {this.buttonOptions.map(option => {
+              return (
+                <button
+                  className={this.state.active === option ? styles.active : ""}
+                  onClick={() => this.topicSortHandler(null)}
+                >
+                  {option[0].toUpperCase() + option.slice(1)}
+                </button>
+              );
+            })}
+          </div>
+          <div>
+            <NewPost firebaseRef={firebase.database().ref("posts")} />
+          </div>
         </div>
         <div>
           <Posts error={this.state.error} posts={this.state.displayPosts} />

@@ -11,17 +11,23 @@ const posts = props => {
   );
 
   if (!props.error) {
-    posts = props.posts.map(post => {
-      return (
-        <Post
-          title={post.title}
-          author={post.author}
-          content={post.content}
-          topic={post.topic}
-          timestamp={post.timestamp}
-        />
-      );
-    });
+    return (
+      <section className={styles.vents}>
+        {
+          (posts = props.posts.map(post => {
+            return (
+              <Post
+                title={post.title}
+                author={post.author}
+                content={post.content}
+                topic={post.topic}
+                timestamp={post.timestamp}
+              />
+            );
+          }))
+        }
+      </section>
+    );
   }
 
   return (
