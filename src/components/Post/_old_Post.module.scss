@@ -1,0 +1,66 @@
+@import "./../../design/scss_variables.scss";
+
+.vent {
+  background-color: $color-grey-light-1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+
+  display: grid;
+  grid-gap: 10rem;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 3.5rem;
+
+  :hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &__img {
+    border-radius: 5px 5px 0 0;
+    height: 150px;
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    z-index: 1;
+    display: block;
+    margin: auto;
+  }
+
+  &__container {
+    padding: 2px 16px;
+  }
+
+  &__title {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: end;
+    z-index: 3;
+
+    width: 80%;
+    font-family: $font-display;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 1.25rem;
+    background-color: $color-secondary;
+    color: #fff;
+    font-weight: 400;
+    transform: translateY(50%);
+  }
+
+  &__content {
+    font-family: $font-display;
+    font-size: 1.8rem;
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+  }
+
+  &__date {
+    grid-row: 3 /4;
+    grid-column: 2/-1;
+  }
+  &__author {
+    grid-row: 3 /4;
+  }
+}

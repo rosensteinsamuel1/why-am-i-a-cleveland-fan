@@ -3,6 +3,8 @@ import * as firebase from "firebase";
 import config from "../../firebase-config";
 
 import styles from "./Blog.module.scss";
+
+import Navigation from "../../components/Navigation/Navigation";
 import Posts from "../../components/Posts/Posts";
 import SelectorButtons from "../../components/SelectorButtons/SelectorButtons";
 
@@ -66,14 +68,18 @@ class Blog extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <div className={styles.heading_container}>
-          <SelectorButtons
-            onSelection={this.onSelectionHandler}
-            firebaseRef={firebase.database().ref("posts")}
-          />
+      <div>
+        <Navigation />
+
+        <div className={styles.container}>
+          <div className={styles.heading_container}>
+            <SelectorButtons
+              onSelection={this.onSelectionHandler}
+              firebaseRef={firebase.database().ref("posts")}
+            />
+          </div>
+          <Posts error={this.state.error} posts={this.state.displayPosts} />
         </div>
-        <Posts error={this.state.error} posts={this.state.displayPosts} />
       </div>
     );
   }

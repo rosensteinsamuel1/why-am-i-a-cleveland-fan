@@ -13,11 +13,19 @@ const post = props => {
 
   return (
     <div className={styles.vent}>
-      <LogoImg topic={props.topic} />
-      <div className={styles.vent__title}>{props.title}</div>
-      <div className={styles.vent__content}>{props.content}</div>
-      <div className={styles.vent__author}>{props.author}</div>
-      <div className={styles.vent__date}>{date}</div>
+      <LogoImg topic={props.topic} className={styles.vent__img} />{" "}
+      <div className={styles.vent__title}>
+        <p>{props.title}</p>
+      </div>
+      <div className={styles.vent__content}>
+        <p>{props.content}</p>
+      </div>
+      <div className={styles.vent__author}>
+        <p>{props.author}</p>
+      </div>
+      <div className={styles.vent__date}>
+        <p>{date}</p>
+      </div>
     </div>
   );
 };

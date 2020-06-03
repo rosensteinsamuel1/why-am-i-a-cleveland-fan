@@ -26,7 +26,7 @@ const logoImg = props => {
   return (
     <img
       height="150px"
-      width="auto "
+      width="auto"
       src={img}
       alt="topic logo"
       className={styles.vent__img}

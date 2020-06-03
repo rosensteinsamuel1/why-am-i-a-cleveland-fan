@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "reactstrap";
-import styles from "./Posts.module.css";
+import styles from "./Posts.module.scss";
 import Post from "../Post/Post";
 
 // TODO: sort via timestamp- DONE
@@ -12,7 +12,7 @@ const posts = props => {
 
   if (!props.error) {
     return (
-      <section className={styles.vents}>
+      <section className={styles.vent__container}>
         {
           (posts = props.posts.map(post => {
             return (

@@ -1,8 +1,9 @@
-.vents {
+.vent__container {
   grid-column: 1 / -1;
   margin: 2rem 0;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  grid-gap: 5rem;
+  grid-gap: 2.5rem;
+  padding: 3rem;
 }

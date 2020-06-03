@@ -4,11 +4,7 @@ import Blog from "./containers/Blog/Blog";
 import "./App.scss";
 // className={styles.App}
 function App() {
-  return (
-    <div>
-      <Blog />
-    </div>
-  );
+  return <Blog />;
 }
 
 export default App;
