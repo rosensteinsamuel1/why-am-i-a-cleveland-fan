@@ -24,15 +24,13 @@ const logoImg = props => {
   }
 
   return (
-    <div>
-      <img
-        height="150px"
-        width="auto "
-        src={img}
-        alt="topic logo"
-        className={styles.vent__img}
-      />
-    </div>
+    <img
+      height="150px"
+      width="auto "
+      src={img}
+      alt="topic logo"
+      className={styles.vent__img}
+    />
   );
 };
 

@@ -70,9 +70,9 @@ class NewPost extends Component {
     return (
       <div>
         <div style={{ textAlign: "center" }}>
-          <Button color="danger" onClick={this.modalHandler}>
+          <button className={styles.post__button} onClick={this.modalHandler}>
             New Vent
-          </Button>
+          </button>
         </div>
 
         <Modal

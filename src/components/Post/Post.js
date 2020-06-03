@@ -15,6 +15,7 @@ const post = props => {
     <div className={styles.vent}>
       <LogoImg topic={props.topic} />
       <div className={styles.vent__title}>{props.title}</div>
+      <div className={styles.vent__content}>{props.content}</div>
       <div className={styles.vent__author}>{props.author}</div>
       <div className={styles.vent__date}>{date}</div>
     </div>

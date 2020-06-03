@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as firebase from "firebase";
 import config from "../../firebase-config";
 import NewPost from "../../components/NewPost/NewPost";
-import styles from "./Blog.module.css";
+import styles from "./Blog.module.scss";
 import Posts from "../../components/Posts/Posts";
 
 // TODO: create filter button that toggles display of only one topic
@@ -19,51 +19,6 @@ class Blog extends Component {
       active: "all",
       choosenTopic: null
     };
-
-    this.buttonOptions = ["browns", "indians", "cavs", "other"];
-
-    // this.state = {
-    //   posts: [
-    //     {
-    //       id: 1,
-    //       category: "sports",
-    //       title: "used dirtbike",
-    //       content: "this ‘is a post about the BROWNS",
-    //       author: "sam",
-    //       topic: "browns"
-    //     },
-    //     {
-    //       id: 1,
-    //       title: "another used dirtbike",
-    //       content: "this is a post about the CAVS",
-    //       author: "sam",
-    //       topic: "indians"
-    //     },
-    //     {
-    //       id: 1,
-    //       category: "sports",
-    //       title: "used dirtbike",
-    //       content: "this ‘is a post about the BROWNS",
-    //       author: "sam",
-    //       topic: "browns"
-    //     },
-    //     {
-    //       id: 1,
-    //       title: "another used dirtbike",
-    //       content: "this is a post about the CAVS",
-    //       author: "sam",
-    //       topic: "indians"
-    //     },
-    //     {
-    //       id: 1,
-    //       category: "sports",
-    //       title: "used dirtbike",
-    //       content: "this ‘is a post about the BROWNS",
-    //       author: "sam",
-    //       topic: "browns"
-    //     }
-    //   ]
-    // };
 
     // Initialize Firebase
     if (!firebase.apps.length) {
@@ -128,7 +83,7 @@ class Blog extends Component {
               {" "}
               All
             </button>
-            {this.buttonOptions.map(option => {
+            {["browns", "indians", "cavs", "other"].map(option => {
               return (
                 <button
                   className={this.state.active === option ? styles.active : ""}
@@ -139,13 +94,10 @@ class Blog extends Component {
               );
             })}
           </div>
-          <div>
-            <NewPost firebaseRef={firebase.database().ref("posts")} />
-          </div>
+          <NewPost firebaseRef={firebase.database().ref("posts")} />
         </div>
-        <div>
-          <Posts error={this.state.error} posts={this.state.displayPosts} />
-        </div>
+
+        <Posts error={this.state.error} posts={this.state.displayPosts} />
       </div>
     );
   }

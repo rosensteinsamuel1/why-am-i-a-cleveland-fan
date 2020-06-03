@@ -19,3 +19,14 @@
   margin: 10px;
   max-width: 95%;
 }
+
+.post__button {
+  padding: 5px;
+  width: 150px;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 5px;
+  margin: 2rem;
+  background-color: red;
+  color: white;
+}
