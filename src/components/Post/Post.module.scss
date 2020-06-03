@@ -1,32 +1,68 @@
+@import "./../../design/scss_variables.scss";
+
+.grid_item {
+  background-color: red;
+}
+
 .vent {
+  height: 100%;
   box-shadow: 0px 1px 5px #555;
   background-color: white;
 
   display: grid;
-  grid-template-rows: 150px 2fr 1fr;
+  grid-template-rows: 150px 1fr 4rem;
+  grid-template-columns: repeat(2, 1fr);
+
+  transition: transform 0.2s;
 
   &__img {
     grid-row: 1/2;
     grid-column: 1 / -1;
+
+    float: left;
+    width: 100%;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale(1.5);
+    }
   }
 
   &__title {
     font-size: 2rem;
     padding: 0.5rem;
 
-    grid-row: 2/3;
+    grid-row: 1/2;
     grid-column: 1 / -1;
+
+    justify-self: center;
+    align-self: end;
+    z-index: 3;
+
+    width: 80%;
+    font-family: $font-display;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 1.25rem;
+    background-color: $color-secondary;
+    color: #fff;
+    font-weight: 400;
+    transform: translateY(50%);
   }
 
   &__content {
-    padding: 0.5rem;
+    grid-row: 2 /3;
+    grid-column: 1 / -1;
+    padding: 5rem;
     line-height: 1.6em;
   }
 
   &__date {
+    grid-row: 3 /-1;
   }
 
   &__author {
+    grid-row: 3 /-1;
   }
 }
 

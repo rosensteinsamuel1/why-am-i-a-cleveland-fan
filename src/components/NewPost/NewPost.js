@@ -69,11 +69,9 @@ class NewPost extends Component {
   render() {
     return (
       <div>
-        <div style={{ textAlign: "center" }}>
-          <button className={styles.post__button} onClick={this.modalHandler}>
-            New Vent
-          </button>
-        </div>
+        <button className={styles.post__button} onClick={this.modalHandler}>
+          New Vent
+        </button>
 
         <Modal
           isOpen={this.state.modal}

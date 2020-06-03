@@ -1,8 +1,8 @@
 import React from "react";
 
-import brownsLogo from "../../assets/photos/browns_logo.png";
-import indiansLogo from "../../assets/photos/indians_logo.png";
-import cavsLogo from "../../assets/photos/cavs_logo.png";
+import brownsLogo from "../../assets/photos/browns_logo_horz.png";
+import indiansLogo from "../../assets/photos/indians_logo_horz.png";
+import cavsLogo from "../../assets/photos/cavs_logo_horz.png";
 import clevelandPic from "../../assets/photos/cleveland.jpg";
 
 import styles from "./Post.module.scss";
