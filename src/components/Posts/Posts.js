@@ -17,6 +17,7 @@ const posts = props => {
           (posts = props.posts.map(post => {
             return (
               <Post
+                key={post.id}
                 title={post.title}
                 author={post.author}
                 content={post.content}

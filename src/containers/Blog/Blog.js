@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
 import config from "../../firebase-config";
-import NewPost from "../../components/NewPost/NewPost";
+
 import styles from "./Blog.module.scss";
 import Posts from "../../components/Posts/Posts";
+import SelectorButtons from "../../components/SelectorButtons/SelectorButtons";
 
 // TODO: create filter button that toggles display of only one topic
 
@@ -46,57 +47,32 @@ class Blog extends Component {
       });
   }
 
-  topicSortHandler(topic) {
-    this.setState({ choosenTopic: topic });
-
+  onSelectionHandler = selection => {
+    console.log("selected: " + selection);
+    this.setState({ choosenTopic: selection });
     const sortedArr = this.state.allPosts.filter(post => {
-      if (topic) {
-        return post.topic === topic;
+      if (selection) {
+        return post.topic === selection;
       } else {
         return post;
       }
     });
     this.setState({
-      choosenTopic: topic,
+      choosenTopic: selection,
       displayPosts: sortedArr,
-      active: topic
+      active: selection
     });
-  }
+  };
 
-  //<CardDeck className="col-md-4 col-sm-12 mb-4">{posts}</CardDeck>
   render() {
     return (
-      <div class={styles.container}>
+      <div className={styles.container}>
         <div className={styles.heading_container}>
-          <div className={styles.appTitle}>
-            <h1>CLEVELAND SPORTS FANS - UNITE</h1>
-            <h3>
-              This is a forum for venting about the rough life we live as
-              Cleveland sports fans.
-            </h3>
-          </div>
-          <div className={styles.sortButtons}>
-            <button
-              className={this.state.active === "all" ? styles.active : ""}
-              onClick={() => this.topicSortHandler(null)}
-            >
-              {" "}
-              All
-            </button>
-            {["browns", "indians", "cavs", "other"].map(option => {
-              return (
-                <button
-                  className={this.state.active === option ? styles.active : ""}
-                  onClick={() => this.topicSortHandler(null)}
-                >
-                  {option[0].toUpperCase() + option.slice(1)}
-                </button>
-              );
-            })}
-          </div>
-          <NewPost firebaseRef={firebase.database().ref("posts")} />
+          <SelectorButtons
+            onSelection={this.onSelectionHandler}
+            firebaseRef={firebase.database().ref("posts")}
+          />
         </div>
-
         <Posts error={this.state.error} posts={this.state.displayPosts} />
       </div>
     );

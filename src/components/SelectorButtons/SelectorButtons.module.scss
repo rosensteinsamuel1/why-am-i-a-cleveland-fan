@@ -1,0 +1,31 @@
+.selectors {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.selectors button {
+  // margin: 10px;
+  padding: 5px;
+  width: 150px;
+  text-align: center;
+
+  font-size: 2rem;
+  border-radius: 5px;
+  margin: 2rem;
+
+  &:hover {
+    transform: scale(1.1);
+    color: white;
+    background-color: yellow;
+    // background-color: linear-gradient(130deg, #503bff, 0%, #8293ff, 100%);
+  }
+}
+
+.active {
+  //   background-color: rgb(108, 117, 125);
+  background-color: red;
+  color: rgb(249, 249, 249);
+}
