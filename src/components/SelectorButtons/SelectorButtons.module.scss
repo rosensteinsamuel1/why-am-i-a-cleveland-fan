@@ -1,3 +1,5 @@
+@import "./../../design/scss_variables.scss";
+
 .selectors {
   display: flex;
   justify-content: center;
@@ -19,13 +21,13 @@
   &:hover {
     transform: scale(1.1);
     color: white;
-    background-color: yellow;
+    background-color: $color-secondary-dark;
     // background-color: linear-gradient(130deg, #503bff, 0%, #8293ff, 100%);
   }
 }
 
 .active {
   //   background-color: rgb(108, 117, 125);
-  background-color: red;
+  background-color: $color-secondary-dark;
   color: rgb(249, 249, 249);
 }

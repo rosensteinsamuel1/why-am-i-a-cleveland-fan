@@ -3,7 +3,7 @@ import styles from "./Post.module.scss";
 import LogoImg from "./LogoImage";
 
 const post = props => {
-  var date = new Date(props.timestamp).toLocaleString(undefined, {
+  let date = new Date(props.timestamp).toLocaleString(undefined, {
     day: "numeric",
     month: "numeric",
     year: "numeric",
@@ -16,7 +16,9 @@ const post = props => {
       <div className={styles.vent}>
         <LogoImg topic={props.topic} className={styles.vent__img} />{" "}
         <div className={styles.vent__title}>
-          <p>{props.title}</p>
+          <p>
+            <b>{props.title}</b>
+          </p>
         </div>
         <div className={styles.vent__content}>
           <p>{props.content}</p>
@@ -25,7 +27,11 @@ const post = props => {
           <p>{props.author}</p>
         </div>
         <div className={styles.vent__date}>
-          <p>{date}</p>
+          <p>
+            {date.split(", ")[0]}
+            <br />
+            {date.split(", ")[1]}
+          </p>
         </div>
       </div>
     </div>

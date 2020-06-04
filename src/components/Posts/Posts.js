@@ -1,5 +1,4 @@
 import React from "react";
-import { Row } from "reactstrap";
 import styles from "./Posts.module.scss";
 import Post from "../Post/Post";
 
@@ -32,10 +31,8 @@ const posts = props => {
   }
 
   return (
-    <div className={styles.cardDeck}>
-      <h1> </h1>
-      <h1 style={{ fontFamily: "WorkSans-Bold   " }}>RECENT VENTS</h1>
-      <Row>{posts}</Row>
+    <div>
+      <div className={styles.cardDeck}>{posts}</div>
     </div>
   );
 };

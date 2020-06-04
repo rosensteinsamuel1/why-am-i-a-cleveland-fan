@@ -9,7 +9,7 @@ import {
   Label,
   Input
 } from "reactstrap";
-import styles from "./NewPost.module.css";
+import styles from "./NewPost.module.scss";
 
 // TODO: make sure all fields are filled when submitting new post DONE
 // TODO: add DATE propery to post
@@ -68,8 +68,12 @@ class NewPost extends Component {
 
   render() {
     return (
-      <div>
-        <button className={styles.post__button} onClick={this.modalHandler}>
+      <React.Fragment>
+        <button
+          className={styles.new_post__button}
+          onClick={this.modalHandler}
+          style={{ marginRight: "auto" }}
+        >
           New Vent
         </button>
 
@@ -145,7 +149,7 @@ class NewPost extends Component {
             </Button>
           </ModalFooter>
         </Modal>
-      </div>
+      </React.Fragment>
     );
   }
 }

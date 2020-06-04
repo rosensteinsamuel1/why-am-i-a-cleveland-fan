@@ -52,13 +52,18 @@ class Blog extends Component {
   onSelectionHandler = selection => {
     console.log("selected: " + selection);
     this.setState({ choosenTopic: selection });
-    const sortedArr = this.state.allPosts.filter(post => {
-      if (selection) {
-        return post.topic === selection;
-      } else {
-        return post;
-      }
-    });
+    let sortedArr = [];
+    if (selection !== "all") {
+      sortedArr = this.state.allPosts.filter(post => {
+        if (selection) {
+          return post.topic === selection;
+        } else {
+          return post;
+        }
+      });
+    } else {
+      sortedArr = this.state.allPosts;
+    }
     this.setState({
       choosenTopic: selection,
       displayPosts: sortedArr,

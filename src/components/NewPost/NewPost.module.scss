@@ -1,3 +1,16 @@
+@import "./../../design/scss_variables.scss";
+
+.new_post__button {
+  padding: 5px;
+  width: 150px;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 5px;
+  margin-right: auto;
+  background-color: $color-secondary-dark;
+  color: white;
+}
+
 .NewPostButton button:hover,
 .NewPostButton button:active {
   color: white;
@@ -18,15 +31,4 @@
 .NewPostModal textarea {
   margin: 10px;
   max-width: 95%;
-}
-
-.post__button {
-  padding: 5px;
-  width: 150px;
-  text-align: center;
-  font-size: 2rem;
-  border-radius: 5px;
-  margin: 2rem;
-  background-color: red;
-  color: white;
 }

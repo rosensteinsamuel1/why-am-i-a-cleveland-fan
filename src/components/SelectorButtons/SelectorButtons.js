@@ -19,7 +19,7 @@ function SelectorButtons(props) {
       {["all", "browns", "indians", "cavs", "other"].map(option => {
         return (
           <button
-            className={active === option ? "active" : ""}
+            className={active === option ? `${styles.active}` : ""}
             onClick={() => clicked(option)}
           >
             {option[0].toUpperCase() + option.slice(1)}
