@@ -7,6 +7,7 @@ import styles from "./Blog.module.scss";
 import Navigation from "../../components/Navigation/Navigation";
 import Posts from "../../components/Posts/Posts";
 import SelectorButtons from "../../components/SelectorButtons/SelectorButtons";
+import OpenModal from "../../components/NewPost/OpenModal";
 
 // TODO: create filter button that toggles display of only one topic
 
@@ -74,8 +75,6 @@ class Blog extends Component {
   render() {
     return (
       <div>
-        <Navigation />
-
         <div className={styles.container}>
           <div className={styles.heading_container}>
             <SelectorButtons

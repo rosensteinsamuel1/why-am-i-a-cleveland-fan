@@ -24,14 +24,13 @@ const post = props => {
           <p>{props.content}</p>
         </div>
         <div className={styles.vent__author}>
-          <p>{props.author}</p>
+          <p>{`Submitted by: ${props.author}`}</p>
         </div>
         <div className={styles.vent__date}>
-          <p>
-            {date.split(", ")[0]}
-            <br />
-            {date.split(", ")[1]}
-          </p>
+          <p> {date.split(", ")[0]}</p>
+        </div>
+        <div className={styles.vent__time}>
+          <p>{date.split(", ")[1]}</p>
         </div>
       </div>
     </div>

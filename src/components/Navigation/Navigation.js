@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Navigation.module.scss";
 
-import About from "../About/About";
+import About from "./About/About";
 
 function Navigation() {
   return (
