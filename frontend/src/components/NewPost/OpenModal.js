@@ -1,5 +1,5 @@
 import React from "react";
-// import "./App.css";
+
 import Modal from "./Modal";
 
 function OpenModal() {

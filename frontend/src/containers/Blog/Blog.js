@@ -9,7 +9,16 @@ import Posts from "../../components/Posts/Posts";
 import SelectorButtons from "../../components/SelectorButtons/SelectorButtons";
 import OpenModal from "../../components/NewPost/OpenModal";
 
+import { css } from "@emotion/core";
+import RotateLoader from "react-spinners/RotateLoader";
+
 // TODO: create filter button that toggles display of only one topic
+const override = css`
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  border-color: orange;
+`;
 
 class Blog extends Component {
   constructor(props) {
@@ -21,7 +30,8 @@ class Blog extends Component {
       displayPosts: [],
       allPosts: [],
       active: "all",
-      choosenTopic: null
+      choosenTopic: null,
+      isLoading: true
     };
 
     // Initialize Firebase
@@ -45,7 +55,7 @@ class Blog extends Component {
         _this.setState({
           allPosts: posts,
           displayPosts: posts,
-          loading: false
+          isLoading: false
         });
       });
   }
@@ -82,7 +92,11 @@ class Blog extends Component {
               firebaseRef={firebase.database().ref("posts")}
             />
           </div>
-          <Posts error={this.state.error} posts={this.state.displayPosts} />
+          {this.state.isLoading ? (
+            <RotateLoader css={override} size={15} color={"#e76f51"} />
+          ) : (
+            <Posts error={this.state.error} posts={this.state.displayPosts} />
+          )}
         </div>
       </div>
     );
