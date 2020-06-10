@@ -92,6 +92,7 @@ class Blog extends Component {
               firebaseRef={firebase.database().ref("posts")}
             />
           </div>
+          <OpenModal firebaseRef={firebase.database().ref("posts")} />
           {this.state.isLoading ? (
             <RotateLoader css={override} size={15} color={"#e76f51"} />
           ) : (
