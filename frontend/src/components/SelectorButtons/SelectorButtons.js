@@ -11,7 +11,7 @@ function SelectorButtons(props) {
     setActive(selection);
     props.onSelection(selection);
   };
-
+  // <NewPost firebaseRef={props.firebaseRef} />
   return (
     <div className={styles.selectors}>
       <NewPost firebaseRef={props.firebaseRef} />

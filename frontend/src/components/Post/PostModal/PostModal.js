@@ -60,7 +60,11 @@ const PostModal = forwardRef((props, ref) => {
           </div>
           <div className={styles.comment_form}>
             {" "}
-            <Comment post={props.post} onCommentSubmit={close} />
+            <Comment
+              post={props.post}
+              onCommentSubmit={close}
+              firebaseRef={props.firebaseRef}
+            />
           </div>
         </div>
       </Modal>

@@ -12,6 +12,7 @@ import "./App.scss";
  * TODOs
  * Cleanup:
  * - remove LogoImage's css file
+ * - refactor NewPost to functional component with useContext hook for firebase ref
  *
  * Implementation
  * - Set max card width- DONE

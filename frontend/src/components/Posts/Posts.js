@@ -14,7 +14,13 @@ const posts = props => {
       <section className={styles.vent__container}>
         {
           (posts = props.posts.map(post => {
-            return <Post post={post} key={post.key} />;
+            return (
+              <Post
+                post={post}
+                key={post.key}
+                firebaseRef={props.firebaseRef}
+              />
+            );
           }))
         }
       </section>

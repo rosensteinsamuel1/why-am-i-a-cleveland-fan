@@ -24,7 +24,11 @@ const Post = props => {
   return (
     <div className={styles.grid_item} key={key}>
       <div className={styles.vent} onClick={openModal}>
-        <PostModal ref={modalRef} post={props.post}></PostModal>
+        <PostModal
+          ref={modalRef}
+          post={props.post}
+          firebaseRef={props.firebaseRef}
+        ></PostModal>
         <PostContent post={props.post} />
         {comments ? (
           <div className={styles.vent__comment_count}>

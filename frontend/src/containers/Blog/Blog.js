@@ -4,15 +4,17 @@ import config from "../../firebase-config";
 
 import styles from "./Blog.module.scss";
 
-import Navigation from "../../components/Navigation/Navigation";
+// import OpenModal from "../../components/NewPost/OpenModal";
+// import Navigation from "../../components/Navigation/Navigation";
+
 import Posts from "../../components/Posts/Posts";
 import SelectorButtons from "../../components/SelectorButtons/SelectorButtons";
-import OpenModal from "../../components/NewPost/OpenModal";
+
+import { FirebaseContext } from "../../context/FirebaseContext";
 
 import { css } from "@emotion/core";
 import RotateLoader from "react-spinners/RotateLoader";
 
-// TODO: create filter button that toggles display of only one topic
 const override = css`
   position: fixed;
   left: 50%;
@@ -24,7 +26,7 @@ class Blog extends Component {
   constructor(props) {
     super(props);
     // Post includes the following data:
-    // Category, Title, Author, Location, Cotent
+    // Key, Category, Title, Author, Location, Content
 
     this.state = {
       displayPosts: [],
@@ -46,10 +48,12 @@ class Blog extends Component {
       .database()
       .ref("posts")
       .orderByChild("timestamp")
-      .on("value", function(snapshot) {
+      .on("value", snapshot => {
         var values = [];
         snapshot.forEach(function(child) {
-          values.push(child.val());
+          let key = child.key;
+          let post = { key, ...child.val() };
+          values.push(post);
         });
         let posts = values.reverse();
         _this.setState({
@@ -84,21 +88,27 @@ class Blog extends Component {
 
   render() {
     return (
-      <div>
-        <div className={styles.container}>
-          <div className={styles.heading_container}>
-            <SelectorButtons
-              onSelection={this.onSelectionHandler}
-              firebaseRef={firebase.database().ref("posts")}
-            />
+      <FirebaseContext.Provider value={firebase.database()}>
+        <div>
+          <div className={styles.container}>
+            <div className={styles.heading_container}>
+              <SelectorButtons
+                onSelection={this.onSelectionHandler}
+                firebaseRef={firebase.database().ref("posts")}
+              />
+            </div>
+            {this.state.isLoading ? (
+              <RotateLoader css={override} size={15} color={"#e76f51"} />
+            ) : (
+              <Posts
+                error={this.state.error}
+                posts={this.state.displayPosts}
+                firebaseRef={firebase.database().ref("posts")}
+              />
+            )}
           </div>
-          {this.state.isLoading ? (
-            <RotateLoader css={override} size={15} color={"#e76f51"} />
-          ) : (
-            <Posts error={this.state.error} posts={this.state.displayPosts} />
-          )}
         </div>
-      </div>
+      </FirebaseContext.Provider>
     );
   }
 }
