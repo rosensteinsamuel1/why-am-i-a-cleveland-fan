@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./NewPost.module.scss";
+import styles from "./OpenModal.module.scss";
 import Modal from "./Modal";
 
 function OpenModal(props) {
@@ -53,13 +53,28 @@ function OpenModal(props) {
 
   return (
     <div>
-      <button type="button" onClick={openModal}>
+      <button
+        type="button"
+        onClick={openModal}
+        className={styles.modal__btn_open}
+      >
         Open Modal
       </button>
+
       <Modal ref={modalRef}>
-        <h1>Modal Header</h1>
+        <div>
+          <button
+            onClick={() => modalRef.current.close()}
+            style={{ marginRight: "2rem" }}
+            className={styles.modal__btn_close}
+          >
+            Close Modal
+          </button>
+        </div>
+
+        <h1>New Vent</h1>
         <form onSubmit={submitHandler}>
-          <div className="form-control">
+          <div className={styles.modal__title}>
             <label htmlFor="title">Title</label>
             <input
               type="text"
@@ -70,7 +85,7 @@ function OpenModal(props) {
               }}
             />
           </div>
-          <div className="form-control">
+          <div className={styles.modal__content}>
             <label htmlFor="content">Vent</label>
             <input
               type="text"
@@ -81,7 +96,7 @@ function OpenModal(props) {
               }}
             />
           </div>
-          <div className="form-control">
+          <div>
             <label htmlFor="author">Author</label>
             <input
               type="text"
@@ -108,10 +123,11 @@ function OpenModal(props) {
             <option value="other">Other</option>
           </select>
           <div className="blog-form__actions">
-            <button type="submit">Submit Post</button>
+            <button type="submit" className={styles.modal__btn_submit}>
+              Submit Post
+            </button>
           </div>
         </form>
-        <button onClick={() => modalRef.current.close()}>Close Modal</button>
       </Modal>
     </div>
   );
