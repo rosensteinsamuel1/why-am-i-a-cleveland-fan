@@ -14,17 +14,7 @@ const posts = props => {
       <section className={styles.vent__container}>
         {
           (posts = props.posts.map(post => {
-            return (
-              <Post
-                key={post.id}
-                title={post.title}
-                author={post.author}
-                content={post.content}
-                topic={post.topic}
-                timestamp={post.timestamp}
-                comments={post.comments}
-              />
-            );
+            return <Post post={post} key={post.key} />;
           }))
         }
       </section>
@@ -37,5 +27,13 @@ const posts = props => {
     </div>
   );
 };
+
+// key={post.id}
+// title={post.title}
+// author={post.author}
+// content={post.content}
+// topic={post.topic}
+// timestamp={post.timestamp}
+// comments={post.comments}
 
 export default posts;
