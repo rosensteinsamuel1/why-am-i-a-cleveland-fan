@@ -22,6 +22,7 @@ const posts = props => {
                 content={post.content}
                 topic={post.topic}
                 timestamp={post.timestamp}
+                comments={post.comments}
               />
             );
           }))
