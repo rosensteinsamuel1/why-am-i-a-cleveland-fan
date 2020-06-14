@@ -1,0 +1,7 @@
+.comment_container {
+  grid-row: 2 / -1;
+  grid-column: 2 / -1;
+
+  display: grid;
+  grid-template-rows: 0.2fr 0.8fr;
+}

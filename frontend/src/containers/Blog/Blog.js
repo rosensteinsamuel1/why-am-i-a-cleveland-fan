@@ -51,8 +51,18 @@ class Blog extends Component {
       .on("value", snapshot => {
         var values = [];
         snapshot.forEach(function(child) {
+          let comments = [];
+
+          // Restructure the comments to: [{key, values},...]
+          if (child.val().comments) {
+            Object.keys(child.val().comments).forEach(key => {
+              comments.push({ key, ...child.val().comments[key] });
+            });
+          }
+
           let key = child.key;
           let post = { key, ...child.val() };
+          post.comments = comments;
           values.push(post);
         });
         let posts = values.reverse();
@@ -98,7 +108,7 @@ class Blog extends Component {
               />
             </div>
             {this.state.isLoading ? (
-              <RotateLoader css={override} size={15} color={"#e76f51"} />
+              <RotateLoader css={override} size={15} color={"#AAA"} />
             ) : (
               <Posts
                 error={this.state.error}

@@ -17,7 +17,8 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     minHeight: "30%",
     width: "60%",
-    overflowY: "auto"
+    maxHeight: "70%",
+    overflow: "hidden"
   }
 };
 
@@ -55,17 +56,15 @@ const PostModal = forwardRef((props, ref) => {
           <button onClick={close} className={styles.btn_close}>
             Close
           </button>
+
           <div className={styles.vent__wrapper}>
             <PostContent post={props.post} />
           </div>
-          <div className={styles.comment_form}>
-            {" "}
-            <Comment
-              post={props.post}
-              onCommentSubmit={close}
-              firebaseRef={props.firebaseRef}
-            />
-          </div>
+          <Comment
+            post={props.post}
+            onCommentSubmit={close}
+            firebaseRef={props.firebaseRef}
+          />
         </div>
       </Modal>
     </div>

@@ -5,15 +5,7 @@ import PostModal from "./PostModal/PostModal";
 import PostContent from "./PostContent";
 
 const Post = props => {
-  const {
-    key,
-    title,
-    author,
-    content,
-    topic,
-    timestamp,
-    comments
-  } = props.post;
+  const { key, comments } = props.post;
 
   const modalRef = React.useRef();
 
@@ -32,7 +24,7 @@ const Post = props => {
         <PostContent post={props.post} />
         {comments ? (
           <div className={styles.vent__comment_count}>
-            <p> {`Comments (${comments.length})`}</p>
+            <p> {`Comments (${Array.from(comments).length})`}</p>
           </div>
         ) : null}
       </div>

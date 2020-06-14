@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 
 import CommentForm from "./CommentForm/CommentForm";
+import CommentList from "./CommentList/CommentList";
+
+import styles from "./Comment.module.scss";
+
 import { FirebaseContext } from "../../context/FirebaseContext";
 
 const Comment = props => {
@@ -13,13 +17,19 @@ const Comment = props => {
     firebaseRef
       .ref()
       .child(`posts/${props.post.key}/comments`)
-      .update(comment)
+      .push(comment)
       .then(console.log(comment, "was submitted"));
 
     // Close Modal
     props.onCommentSubmit();
   };
-  return <CommentForm onSubmit={onSubmitHandler} />;
+
+  return (
+    <div className={styles.comment_container}>
+      <CommentForm onSubmit={onSubmitHandler} />
+      <CommentList post={props.post} />
+    </div>
+  );
 };
 
 export default Comment;

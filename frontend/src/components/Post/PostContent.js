@@ -2,18 +2,14 @@ import React from "react";
 
 import styles from "./PostContent.module.scss";
 
+import dateDisplay from "../../utils/date_display";
+
 import LogoImg from "./LogoImage";
 
 const PostContent = props => {
   const { title, author, content, topic, timestamp } = props.post;
 
-  const date = new Date(timestamp).toLocaleString(undefined, {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+  const date = dateDisplay(timestamp);
 
   return (
     <React.Fragment>

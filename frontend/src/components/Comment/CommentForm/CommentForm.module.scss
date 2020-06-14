@@ -1,0 +1,10 @@
+.comment_form {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr 0.2fr;
+  height: 3rem;
+
+  button {
+    height: 100%;
+  }
+}

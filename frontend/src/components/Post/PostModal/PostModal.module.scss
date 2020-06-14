@@ -8,13 +8,18 @@
   transform: translate(-50%, -50%);
   min-height: 30%;
   width: 60%;
-  overflow-y: auto;
+
+  max-height: 70%;
+  overflow: hidden;
+
+  // overflow-y: auto;
 }
 
 .modal__container {
   display: grid;
-  grid-template-rows: 10px 2fr 0.5fr;
+  grid-template-rows: 10px 1fr;
   grid-template-columns: 0.3fr 0.7fr;
+  grid-gap: 1.2rem;
 }
 
 .btn_close {
@@ -39,10 +44,4 @@
   display: grid;
   grid-template-rows: 150px 0.5rem 1fr 4rem;
   grid-template-columns: repeat(2, 1fr);
-}
-
-.comment_form {
-  grid-row: 3/-1;
-  grid-column: 2/ -1;
-  margin-top: auto;
 }

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import styles from "./CommentForm.module.scss";
+
 const CommentForm = props => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredComment, setEnteredComment] = useState("");
@@ -18,7 +20,7 @@ const CommentForm = props => {
   };
 
   return (
-    <form>
+    <form className={styles.comment_form}>
       <input
         type="text"
         id="name"
@@ -39,7 +41,7 @@ const CommentForm = props => {
       />
       <div className="blog-form__actions">
         <button type="submit" onClick={submitHandler}>
-          Submit Post
+          Comment
         </button>
       </div>
     </form>
