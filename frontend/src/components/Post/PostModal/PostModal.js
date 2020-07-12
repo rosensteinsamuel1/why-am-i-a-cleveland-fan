@@ -58,7 +58,7 @@ const PostModal = forwardRef((props, ref) => {
           </button>
 
           <div className={styles.vent__wrapper}>
-            <PostContent post={props.post} />
+            <PostContent post={props.post} styles={{ fontSize: "1.2rem" }} />
           </div>
           <Comment
             post={props.post}

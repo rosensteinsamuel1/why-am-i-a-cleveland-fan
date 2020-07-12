@@ -19,7 +19,7 @@ const PostContent = props => {
           <b>{title}</b>
         </p>
       </div>
-      <div className={styles.vent__content}>
+      <div className={styles.vent__content} styles={props.styles}>
         <p>{content}</p>
       </div>
       <div className={styles.vent__author}>
