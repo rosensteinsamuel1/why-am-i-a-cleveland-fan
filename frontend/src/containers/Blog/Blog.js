@@ -59,7 +59,7 @@ class Blog extends Component {
     //     _this.setState({
     //       allPosts: posts,
     //       displayPosts: posts,
-    //       loading: false
+    //       isLoading: false
     //     });
     //   });
 
@@ -75,7 +75,7 @@ class Blog extends Component {
     this.setState({
       allPosts: responseData.posts,
       displayPosts: responseData.posts,
-      loading: false
+      isLoading: false
     });
   }
 
