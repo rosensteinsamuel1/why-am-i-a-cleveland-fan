@@ -1,17 +1,4 @@
-const mongoose = require('mongoose');
-
-const Post = require('../models/post')
-
-mongoose
-    .connect(
-        'mongodb+srv://sam:0FROXV5KjOxyUK2k@cluster0.1n2jy.mongodb.net/posts?retryWrites=true&w=majority'
-    )
-    .then(() => {
-        console.log('Connected to the Mongo DB');
-    })
-    .catch(err => {
-        console.log('Connection failed with error: ', error);
-    });
+const { v4: uuidv4 } = require('uuid');
 
 const DUMMY_POSTS = [{
     id: 1234,
@@ -22,25 +9,23 @@ const DUMMY_POSTS = [{
     topic: 'Indians'
 }]
 
-exports.getPosts = async (req, res, next) => {
-    const posts = await Post.find().exec();
-    res.status(200).json({ posts: posts })
+exports.getPosts = (req, res, next) => {
+    res.status(200).json({ posts: DUMMY_POSTS })
 };
 
-exports.newPost = async (req, res, next) => {
-    const { author, content, topic, title, comments } = req.body;
+exports.newPost = (req, res, next) => {
+    const { author, content, topic, title } = req.body;
 
     const timestamp = Date.now();
-    const createdPost = new Post({
+    const newPost = {
+        id: uuidv4(),
         title,
         content,
         topic,
         author,
-        timestamp,
-        comments
-    });
-    const result = await createdPost.save();
-    console.log('Created post: ', result);
-    // DUMMY_POSTS.push(newPost);
-    res.status(201).json({ post: result }); // success when something is created
+        timestamp
+    };
+    console.log('Created post: ', newPost);
+    DUMMY_POSTS.push(newPost);
+    res.status(201).json({ post: newPost }); // success when something is created
 };
