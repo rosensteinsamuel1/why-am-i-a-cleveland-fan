@@ -14,11 +14,8 @@ app.use((req, res, next) => {
     next();
 })
 
-<<<<<<< HEAD
 app.use('/posts', postsRoutes);
 
-=======
->>>>>>> parent of a6ffeff... finished basic backend functionality, get/post routes for coments
 // app.get('/comments', mongoPrac.getPosts);
 
 app.listen(5000);
