@@ -42,36 +42,41 @@ class Blog extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let _this = this;
-    firebase
-      .database()
-      .ref("posts")
-      .orderByChild("timestamp")
-      .on("value", snapshot => {
-        var values = [];
-        snapshot.forEach(function(child) {
-          let comments = [];
+    // Load posts via firebase
+    // firebase
+    //   .database()
+    //   .ref("posts")
+    //   .orderByChild("timestamp")
+    //   .on("value", function (snapshot) {
+    //     var values = [];
+    //     snapshot.forEach(function (child) {
+    //       values.push(child.val());
+    //     });
+    //     let posts = values.reverse();
+    //     console.log(posts)
+    //     _this.setState({
+    //       allPosts: posts,
+    //       displayPosts: posts,
+    //       loading: false
+    //     });
+    //   });
 
-          // Restructure the comments to: [{key, values},...]
-          if (child.val().comments) {
-            Object.keys(child.val().comments).forEach(key => {
-              comments.push({ key, ...child.val().comments[key] });
-            });
-          }
-
-          let key = child.key;
-          let post = { key, ...child.val() };
-          post.comments = comments;
-          values.push(post);
-        });
-        let posts = values.reverse();
-        _this.setState({
-          allPosts: posts,
-          displayPosts: posts,
-          isLoading: false
-        });
-      });
+    // Load posts from MongoDB
+    const response = await fetch('http://localhost:5000/posts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const responseData = await response.json();
+    console.log('responseData: ', responseData.posts)
+    this.setState({
+      allPosts: responseData.posts,
+      displayPosts: responseData.posts,
+      loading: false
+    });
   }
 
   onSelectionHandler = selection => {
@@ -110,12 +115,12 @@ class Blog extends Component {
             {this.state.isLoading ? (
               <RotateLoader css={override} size={15} color={"#AAA"} />
             ) : (
-              <Posts
-                error={this.state.error}
-                posts={this.state.displayPosts}
-                firebaseRef={firebase.database().ref("posts")}
-              />
-            )}
+                <Posts
+                  error={this.state.error}
+                  posts={this.state.displayPosts}
+                  firebaseRef={firebase.database().ref("posts")}
+                />
+              )}
           </div>
         </div>
       </FirebaseContext.Provider>
