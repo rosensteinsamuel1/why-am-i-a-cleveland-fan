@@ -14,8 +14,6 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/posts', postsRoutes);
-
 // app.get('/comments', mongoPrac.getPosts);
 
 app.listen(5000);
