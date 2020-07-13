@@ -1,0 +1,11 @@
+FrontEnd
+- Fix grid width to automatic resizing, currently fixed size
+- Grid margins get weird on small screens
+- Remove Firebase code
+- Proper Error handling
+- Push comments to live version
+
+Backend
+- Proper error handling
+- Implement express-validator for routes
+- Host on Heroku

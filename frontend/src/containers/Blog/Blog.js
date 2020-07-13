@@ -30,24 +30,41 @@ class Blog extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let _this = this;
-    firebase
-      .database()
-      .ref("posts")
-      .orderByChild("timestamp")
-      .on("value", function(snapshot) {
-        var values = [];
-        snapshot.forEach(function(child) {
-          values.push(child.val());
-        });
-        let posts = values.reverse();
-        _this.setState({
-          allPosts: posts,
-          displayPosts: posts,
-          loading: false
-        });
-      });
+    // Load posts via firebase
+    // firebase
+    //   .database()
+    //   .ref("posts")
+    //   .orderByChild("timestamp")
+    //   .on("value", function (snapshot) {
+    //     var values = [];
+    //     snapshot.forEach(function (child) {
+    //       values.push(child.val());
+    //     });
+    //     let posts = values.reverse();
+    //     console.log(posts)
+    //     _this.setState({
+    //       allPosts: posts,
+    //       displayPosts: posts,
+    //       loading: false
+    //     });
+    //   });
+
+    // Load posts from MongoDB
+    const response = await fetch('http://localhost:5000/posts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const responseData = await response.json();
+    console.log('responseData: ', responseData.posts)
+    this.setState({
+      allPosts: responseData.posts,
+      displayPosts: responseData.posts,
+      loading: false
+    });
   }
 
   onSelectionHandler = selection => {

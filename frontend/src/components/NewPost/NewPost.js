@@ -45,19 +45,31 @@ class NewPost extends Component {
     return true;
   };
 
-  submitHandler = () => {
-    let timestamp = Date.now(); // new Date().toLocaleString();
-    console.log(timestamp);
+  submitHandler = async () => {
+    // let timestamp = Date.now(); // new Date().toLocaleString();
+    // console.log(timestamp);
     const data = {
       title: this.state.title,
       content: this.state.content,
       author: this.state.author,
       topic: this.state.topic,
-      timestamp: timestamp
+      // timestamp: timestamp
     };
     if (this.validateForm()) {
       this.setState({ modal: !this.state.modal });
-      this.props.firebaseRef.push(data);
+      // Push data to firebase
+      // this.props.firebaseRef.push(data);
+
+      // Push data to MERN DB
+      const response = await fetch('http://localhost:5000/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      const responseData = await response.json();
+      console.log('responseData: ', responseData)
     }
   };
 
